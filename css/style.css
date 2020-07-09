@@ -1,0 +1,25 @@
+body{
+    font-family: sans-serif;
+}
+.submit{
+    background-color: #52b3d6;
+    color: white;
+}
+.go{
+    background-color: #25a032;
+    color: white;
+}
+.card{
+   background-image: linear-gradient(to bottom right,#cce6f0,#88d1f1);
+}
+
+
+ 
+
+
+
+@media only screen and (max-width: 360px) {
+.question{
+    font-size: 1.7rem;
+}
+  }
