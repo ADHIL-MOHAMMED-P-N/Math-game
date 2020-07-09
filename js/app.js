@@ -8,6 +8,7 @@ const numbers = ['0','1','2','3','4','5','6','7','8','9']
 const signs = ['+','-'];
 const buttons = document.querySelectorAll('.button');//keyboard
 const clear = document.querySelector('.clear');
+const reset = document.querySelector('.reset');
 window.addEventListener('DOMContentLoaded',function(){
     point.textContent = score;
     question.textContent = "Press Go to Play";
@@ -43,8 +44,8 @@ function queGen(){
  que = setOne + sign + setTwo;
  return que;
  
-}
-
+};
+//Keyboard
 submit.addEventListener('click',function(){
     var actualAnwer = eval(que);
     var usersAnswer = input.value;
@@ -66,5 +67,13 @@ buttons.forEach(function(val){
 })
 clear.addEventListener('click',function(){
     input.value ="";
+});
+//reset
+reset.addEventListener('click',function(){
+    score = 0;
+    point.textContent = score;
+    console.log(score);
+    input.value = "";
+    question.textContent = "Press Go to Play";
+    go.style.display = "block"
 })
-
