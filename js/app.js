@@ -9,9 +9,12 @@ const signs = ['+','-'];
 const buttons = document.querySelectorAll('.button');//keyboard
 const clear = document.querySelector('.clear');
 const reset = document.querySelector('.reset');
+var flag = false;//GO button is not clicked
 window.addEventListener('DOMContentLoaded',function(){
     point.textContent = score;
     question.textContent = "Press Go to Play";
+   // input.style.display = 'none';
+  //  reset.style.display = 'none';
 });
 
 var score = 0;
@@ -21,11 +24,14 @@ var randomNumber;
 
 go.addEventListener('click',start);
 function start(){
+ flag =true//GO btn is clicked
  go.style.display = 'none';
  input.style.display = 'block';
  submit.style.display = 'inline-block';
  queGen();
  question.textContent = que;
+ score = 0;
+ point.textContent = score;
 }
 //Question Generator
 function queGen(){
@@ -42,17 +48,25 @@ function queGen(){
  }
  sign = signs[Math.floor(Math.random() * signs.length)]
  que = setOne + sign + setTwo;
+ if(flag){ 
+     return que;
+}else
+ que = "Please press GO to play";
  return que;
- 
 };
 //Keyboard
 submit.addEventListener('click',function(){
+
     var actualAnwer = eval(que);
     var usersAnswer = input.value;
-    if(actualAnwer == usersAnswer){
-        score++;
+    if(flag){
+        if(actualAnwer == usersAnswer){
+            score++;
+        }else{
+            score--;
+        }
     }else{
-        score--;
+        score = 0;
     }
     point.textContent = score;
     queGen();
@@ -62,7 +76,10 @@ submit.addEventListener('click',function(){
 
 buttons.forEach(function(val){
     val.addEventListener('click',function(){
-        input.value += val.value;
+        if(flag){ input.value += val.value;
+        }else{
+            input.value = "";
+        }   
     })
 })
 clear.addEventListener('click',function(){
@@ -70,6 +87,7 @@ clear.addEventListener('click',function(){
 });
 //reset
 reset.addEventListener('click',function(){
+    flag = false
     score = 0;
     point.textContent = score;
     console.log(score);
