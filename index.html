@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/09b9b80687.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <title>MathGame</title>
@@ -13,7 +14,8 @@
         <div class="row">
             <div class="col-md">
                 <div class="card  p-3">
-        <h3>Point</h3>
+        <p class="time"><i class="fas fa-clock"></i>sec</p>
+        <h4>Point</h4>
         <h1 class="point">0</h1>
         <h1 class="question">Press GO to play</h1>
         <div class="form-group">
@@ -49,6 +51,17 @@
              </div>
          </div>
     </div>
+
+    <div class="card text-center score-card">
+        <div class="container p-4">
+            <h1 class="text-white">Your Score</h1>
+        <h1><span class="score text-white"></span></h1>
+        <button class="btn btn-danger closebtn">Close</button>
+        </div>
+    </div>
+
+
+    <!--javascript-->
     <script src="js/jquey.js"></script>
     <script src="js/app.js"></script>
     

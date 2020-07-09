@@ -9,15 +9,21 @@ const signs = ['+','-'];
 const buttons = document.querySelectorAll('.button');//keyboard
 const clear = document.querySelector('.clear');
 const reset = document.querySelector('.reset');
+const time = document.querySelector('.time');
+const scoreCard = document.querySelector('.score-card');
+const gameScore = document.querySelector('.score');//score to display
+const closebtn = document.querySelector('.closebtn');
 var flag = false;//GO button is not clicked
+var count = 60;
+
 window.addEventListener('DOMContentLoaded',function(){
     point.textContent = score;
     question.textContent = "Press Go to Play";
-   // input.style.display = 'none';
-  //  reset.style.display = 'none';
+
 });
 
 var score = 0;
+var userScore = 0;
 var que = "";
 var randomNumber;
 
@@ -32,6 +38,7 @@ function start(){
  question.textContent = que;
  score = 0;
  point.textContent = score;
+
 }
 //Question Generator
 function queGen(){
@@ -86,12 +93,38 @@ clear.addEventListener('click',function(){
     input.value ="";
 });
 //reset
-reset.addEventListener('click',function(){
-    flag = false
-    score = 0;
-    point.textContent = score;
-    console.log(score);
-    input.value = "";
-    question.textContent = "Press Go to Play";
-    go.style.display = "block"
-})
+reset.addEventListener('click',resetFunction)
+
+function resetFunction(){  
+        flag = false
+        userScore =score;
+        score = 0;
+        point.textContent = score;
+        input.value = "";
+        question.textContent = "Press Go to Play";
+        go.style.display = "block" 
+        scoreCard.classList.add('score-card-display');
+        gameScore.textContent = userScore;
+        count = 60;
+        
+}
+
+//time
+setInterval(function(){
+    if(flag){
+        count--;
+        time.textContent = count;
+        if(count <= 0){
+           time.textContent = "Time is up"
+           time.style.color = 'red';
+           resetFunction();
+        }
+    }
+    
+   },1000);
+
+   closebtn.addEventListener('click',function(){
+    scoreCard.classList.remove('score-card-display');
+    count = 60;
+    time.textContent = count;
+   });

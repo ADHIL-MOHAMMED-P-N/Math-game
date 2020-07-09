@@ -9,14 +9,39 @@ body{
     background-color: #25a032;
     color: white;
 }
-.card{
+.row .card{
    background-image: linear-gradient(to bottom right,#cce6f0,#88d1f1);
 }
+.time{
+    margin: 0px;
+    color:#25a032;
+    font-weight: bold;
+}
+.point{
+    margin: 0px;
+}
+.score-card{
+    margin-bottom:500px;
+    padding: 60px;
+    visibility: hidden;
+    width: 100%;
+    height: 650px;
+    margin: auto;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    opacity: 0.9;
+}
 
+/*for toggling*/
+.score-card-display{
+    visibility: visible;
+}
 
- 
-
-
+.score-card .container{
+    border-radius: 5px;
+    background-color: black;
+}
 
 @media only screen and (max-width: 360px) {
 .question{
