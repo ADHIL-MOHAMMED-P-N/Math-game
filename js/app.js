@@ -21,12 +21,10 @@ window.addEventListener('DOMContentLoaded',function(){
     question.textContent = "Press Go to Play";
 
 });
-
 var score = 0;
 var userScore = 0;
 var que = "";
 var randomNumber;
-
 
 go.addEventListener('click',start);
 function start(){
@@ -38,7 +36,6 @@ function start(){
  question.textContent = que;
  score = 0;
  point.textContent = score;
-
 }
 //Question Generator
 function queGen(){
@@ -63,7 +60,6 @@ function queGen(){
 };
 //Keyboard
 submit.addEventListener('click',function(){
-
     var actualAnwer = eval(que);
     var usersAnswer = input.value;
     if(flag){
@@ -81,6 +77,17 @@ submit.addEventListener('click',function(){
     input.value ="";
 });
 
+buttons.forEach(function(orange){
+    orange.addEventListener('click',function(){
+        
+        if(flag){
+            input.value += orange.textContent;
+        }else{
+            input.value = ""
+        }
+    })
+});
+/*
 buttons.forEach(function(val){
     val.addEventListener('click',function(){
         if(flag){ input.value += val.value;
@@ -89,12 +96,12 @@ buttons.forEach(function(val){
         }   
     })
 })
+*/
 clear.addEventListener('click',function(){
     input.value ="";
 });
 //reset
 reset.addEventListener('click',resetFunction)
-
 function resetFunction(){  
         flag = false
         userScore =score;
@@ -105,10 +112,8 @@ function resetFunction(){
         go.style.display = "block" 
         scoreCard.classList.add('score-card-display');
         gameScore.textContent = userScore;
-        count = 60;
-        
+        count = 60;      
 }
-
 //time
 setInterval(function(){
     if(flag){
@@ -119,10 +124,8 @@ setInterval(function(){
            time.style.color = 'red';
            resetFunction();
         }
-    }
-    
+    }  
    },1000);
-
    closebtn.addEventListener('click',function(){
     scoreCard.classList.remove('score-card-display');
     count = 60;
